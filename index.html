@@ -1,217 +1,467 @@
-<!DOCTYPE html>\
-<html lang="en">\
-<head>\
-  <meta charset="UTF-8">\
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-  <title>Your Name | Computer Engineer & AI Researcher</title>\
-  <meta name="description" content="Computer Engineer, Master's Student specializing in Agentic AI, TA at AAST, and Freelance AI Trainer.">\
-  <style>\
-    :root \{\
-      --bg: #0b1120;\
-      --surface: #111827;\
-      --surface-hover: #1e293b;\
-      --text: #f8fafc;\
-      --text-muted: #94a3b8;\
-      --accent: #3b82f6;\
-      --accent-glow: rgba(59, 130, 246, 0.4);\
-      --border: #1e293b;\
-      --radius: 12px;\
-      --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;\
-    \}\
-\
-    * \{ margin: 0; padding: 0; box-sizing: border-box; \}\
-    html \{ scroll-behavior: smooth; \}\
-    body \{\
-      font-family: var(--font);\
-      background: var(--bg);\
-      color: var(--text);\
-      line-height: 1.6;\
-      overflow-x: hidden;\
-    \}\
-\
-    a \{ color: var(--accent); text-decoration: none; transition: 0.2s; \}\
-    a:hover \{ filter: brightness(1.2); \}\
-\
-    .container \{ max-width: 1100px; margin: 0 auto; padding: 0 20px; \}\
-    section \{ padding: 5rem 0; opacity: 0; transform: translateY(20px); transition: 0.6s ease; \}\
-    section.visible \{ opacity: 1; transform: translateY(0); \}\
-\
-    /* Header */\
-    header \{\
-      position: sticky; top: 0; z-index: 100;\
-      background: rgba(11, 17, 32, 0.85); backdrop-filter: blur(10px);\
-      border-bottom: 1px solid var(--border);\
-    \}\
-    nav \{ display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; \}\
-    .logo \{ font-weight: 700; font-size: 1.25rem; letter-spacing: -0.5px; \}\
-    .nav-links \{ display: flex; gap: 1.5rem; \}\
-    .nav-links a \{ color: var(--text-muted); font-size: 0.95rem; \}\
-    .nav-links a:hover \{ color: var(--text); \}\
-    .menu-toggle \{ display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; \}\
-\
-    /* Hero */\
-    .hero \{ min-height: 85vh; display: flex; align-items: center; text-align: center; \}\
-    .hero h1 \{ font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; \}\
-    .hero p \{ font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 2rem; \}\
-    .badge \{ display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem; \}\
-    .btn \{\
-      display: inline-block; background: var(--accent); color: white; padding: 0.8rem 1.6rem;\
-      border-radius: var(--radius); font-weight: 500; border: none; cursor: pointer;\
-      box-shadow: 0 4px 14px var(--accent-glow); transition: transform 0.2s;\
-    \}\
-    .btn:hover \{ transform: translateY(-2px); \}\
-    .btn-outline \{ background: transparent; border: 1px solid var(--border); margin-left: 0.8rem; box-shadow: none; \}\
-\
-    /* Cards */\
-    .grid \{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; \}\
-    .card \{\
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);\
-      padding: 1.8rem; transition: transform 0.2s, border-color 0.2s;\
-    \}\
-    .card:hover \{ border-color: var(--accent); transform: translateY(-4px); \}\
-    .card h3 \{ margin: 0.5rem 0; font-size: 1.2rem; \}\
-    .card p \{ color: var(--text-muted); font-size: 0.95rem; \}\
-    .tag \{ display: inline-block; background: rgba(59, 130, 246, 0.15); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem; margin-right: 0.5rem; margin-top: 0.5rem; \}\
-\
-    /* Contact */\
-    .contact-form \{ max-width: 600px; margin: 2rem auto 0; display: grid; gap: 1rem; \}\
-    input, textarea \{\
-      background: var(--surface); border: 1px solid var(--border); color: var(--text);\
-      padding: 0.9rem; border-radius: var(--radius); font-family: var(--font); font-size: 1rem;\
-    \}\
-    input:focus, textarea:focus \{ outline: none; border-color: var(--accent); \}\
-    textarea \{ min-height: 130px; resize: vertical; \}\
-\
-    /* Footer */\
-    footer \{ border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; \}\
-    .socials \{ display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1rem; \}\
-    .socials a \{ color: var(--text-muted); font-size: 1.2rem; \}\
-\
-    /* Mobile */\
-    @media (max-width: 768px) \{\
-      .nav-links \{ display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--border); \}\
-      .nav-links.active \{ display: flex; \}\
-      .menu-toggle \{ display: block; \}\
-      .hero h1 \{ font-size: 2.2rem; \}\
-      .grid \{ grid-template-columns: 1fr; \}\
-    \}\
-  </style>\
-</head>\
-<body>\
-  <header>\
-    <div class="container">\
-      <nav>\
-        <div class="logo">[Your Name]</div>\
-        <button class="menu-toggle" aria-label="Toggle menu">\uc0\u9776 </button>\
-        <div class="nav-links">\
-          <a href="#about">About</a>\
-          <a href="#research">Research</a>\
-          <a href="#experience">Experience</a>\
-          <a href="#contact">Contact</a>\
-        </div>\
-      </nav>\
-    </div>\
-  </header>\
-\
-  <main>\
-    <section id="hero" class="hero">\
-      <div class="container">\
-        <span class="badge">Computer Engineer & AI Researcher</span>\
-        <h1>Building Intelligent Systems &<br>Shaping the Future of AI</h1>\
-        <p>Master's student researching Agentic AI. Teaching Assistant at Arab Academy for Science & Technology. Freelance AI Trainer.</p>\
-        <div>\
-          <a href="#contact" class="btn">Get In Touch</a>\
-          <a href="https://github.com/[yourgithub]" target="_blank" class="btn btn-outline">GitHub</a>\
-        </div>\
-      </div>\
-    </section>\
-\
-    <section id="about">\
-      <div class="container">\
-        <h2 style="font-size:2rem; margin-bottom:1rem;">About Me</h2>\
-        <p style="color:var(--text-muted); max-width:700px;">\
-          I'm a Computer Engineer passionate about pushing the boundaries of artificial intelligence. Currently pursuing my Master's degree while researching autonomous, goal-driven AI agents. Alongside my academic work, I serve as a Teaching Assistant at the Arab Academy for Science and Technology, where I mentor the next generation of engineers. I also work freelance in AI training, helping organizations build, fine-tune, and evaluate high-quality machine learning models.\
-        </p>\
-      </div>\
-    </section>\
-\
-    <section id="research">\
-      <div class="container">\
-        <h2 style="font-size:2rem; margin-bottom:0.5rem;">Research & Education</h2>\
-        <p style="color:var(--text-muted); margin-bottom:1.5rem;">Master's in Computer Engineering</p>\
-        <div class="card">\
-          <h3>\uc0\u55358 \u56598  Thesis: Agentic AI Systems</h3>\
-          <p>Investigating autonomous planning, tool use, and multi-agent collaboration in LLM-driven environments. Focused on improving reliability, reasoning chains, and real-world deployment constraints.</p>\
-          <div>\
-            <span class="tag">LLMs</span><span class="tag">Multi-Agent Systems</span>\
-            <span class="tag">Reinforcement Learning</span><span class="tag">Python</span>\
-          </div>\
-        </div>\
-      </div>\
-    </section>\
-\
-    <section id="experience">\
-      <div class="container">\
-        <h2 style="font-size:2rem; margin-bottom:1.5rem;">Experience</h2>\
-        <div class="grid">\
-          <div class="card">\
-            <h3>\uc0\u55356 \u57235  Teaching Assistant</h3>\
-            <p><strong>Arab Academy for Science & Technology</strong></p>\
-            <p style="margin-top:0.5rem;">Facilitating labs, mentoring students, grading assignments, and supporting course delivery in core engineering and computing subjects.</p>\
-          </div>\
-          <div class="card">\
-            <h3>\uc0\u55357 \u56507  Freelance AI Trainer</h3>\
-            <p><strong>Independent / Remote</strong></p>\
-            <p style="margin-top:0.5rem;">Curating datasets, prompt engineering, RLHF data annotation, model evaluation, and fine-tuning workflows for enterprise AI projects.</p>\
-          </div>\
-        </div>\
-      </div>\
-    </section>\
-\
-    <section id="contact">\
-      <div class="container">\
-        <h2 style="font-size:2rem; text-align:center; margin-bottom:0.5rem;">Let's Connect</h2>\
-        <p style="color:var(--text-muted); text-align:center; margin-bottom:1rem;">Open to research collaborations, academic opportunities, or freelance AI projects.</p>\
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">\
-          <input type="text" name="name" placeholder="Your Name" required>\
-          <input type="email" name="email" placeholder="Your Email" required>\
-          <textarea name="message" placeholder="Your Message" required></textarea>\
-          <button type="submit" class="btn" style="width:100%;">Send Message</button>\
-        </form>\
-      </div>\
-    </section>\
-  </main>\
-\
-  <footer>\
-    <div class="container">\
-      <div class="socials">\
-        <a href="https://linkedin.com/in/[yourprofile]" target="_blank" aria-label="LinkedIn">LinkedIn</a>\
-        <a href="https://github.com/[yourgithub]" target="_blank" aria-label="GitHub">GitHub</a>\
-        <a href="mailto:[youremail]" aria-label="Email">Email</a>\
-      </div>\
-      <p>&copy; 2026 [Your Name]. All rights reserved.</p>\
-    </div>\
-  </footer>\
-\
-  <script>\
-    // Mobile menu toggle\
-    const menuToggle = document.querySelector('.menu-toggle');\
-    const navLinks = document.querySelector('.nav-links');\
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));\
-\
-    // Close menu on link click\
-    document.querySelectorAll('.nav-links a').forEach(link => \{\
-      link.addEventListener('click', () => navLinks.classList.remove('active'));\
-    \});\
-\
-    // Scroll reveal animation\
-    const observer = new IntersectionObserver((entries) => \{\
-      entries.forEach(entry => \{\
-        if (entry.isIntersecting) entry.target.classList.add('visible');\
-      \});\
-    \}, \{ threshold: 0.1 \});\
-\
-    document.querySelectorAll('section').forEach(sec => observer.observe(sec));\
-  </script>\
-</body>\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrightSmile Dental offers family, cosmetic, and emergency dentistry with a gentle, patient-first approach. Book your appointment today.">
+  <title>BrightSmile Dental | Family & Cosmetic Dentistry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0056b3;
+      --primary-dark: #003d80;
+      --accent: #00c4cc;
+      --bg-light: #f8f9fa;
+      --text: #2d3748;
+      --text-light: #6c757d;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+      scroll-behavior: smooth;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea { font-family: inherit; }
+
+    /* Header */
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #e6f2ff 0%, #f0f9ff 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Sections */
+    section { padding: 5rem 1.5rem; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--primary-dark);
+    }
+
+    /* Services */
+    .services { background: var(--bg-light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .service-card:hover { transform: translateY(-5px); }
+    .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .service-card h3 { margin-bottom: 0.75rem; }
+
+    /* About */
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-text h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .about-text ul { margin: 1.5rem 0 2rem; }
+    .about-text li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .check { color: var(--accent); }
+
+    /* Testimonials */
+    .testimonials { background: var(--bg-light); }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stars { color: #ffc107; margin-bottom: 0.5rem; }
+    .testimonial-card p { font-style: italic; margin-bottom: 1rem; }
+    .author { font-weight: 600; color: var(--primary); }
+
+    /* Contact */
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info h3 { margin-bottom: 1rem; }
+    .contact-item { margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon { font-size: 1.5rem; color: var(--primary); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .form-success { display: none; color: var(--accent); font-weight: 500; margin-top: 0.5rem; }
+
+    /* Footer */
+    footer {
+      background: #1a202c;
+      color: #cbd5e0;
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-col h4 { color: var(--white); margin-bottom: 1rem; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #2d3748; font-size: 0.9rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: var(--shadow);
+        transform: translateY(-150%);
+        transition: var(--transition);
+      }
+      .nav-links.active { transform: translateY(0); }
+      .menu-toggle { display: block; }
+      .hero h1 { font-size: 2rem; }
+      .about-container, .contact-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">🦷 BrightSmile Dental</a>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn">Book Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Gentle Care for Healthier, Brighter Smiles</h1>
+        <p>Family & cosmetic dentistry in a modern, comfortable environment. Serving our community with integrity, advanced technology, and personalized care.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Schedule Your Visit</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2 class="section-title">Our Dental Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🦷</div>
+          <h3>General Dentistry</h3>
+          <p>Comprehensive exams, cleanings, fillings, and preventive care to keep your teeth healthy year-round.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Cosmetic Dentistry</h3>
+          <p>Teeth whitening, veneers, and bonding to help you achieve the confident smile you deserve.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👶</div>
+          <h3>Pediatric Care</h3>
+          <p>Gentle, child-friendly appointments designed to build positive dental habits early.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚨</div>
+          <h3>Emergency Dentistry</h3>
+          <p>Same-day appointments for toothaches, broken teeth, and urgent dental needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-container">
+        <div class="about-img">
+          <img src="https://placehold.co/600x400/e6f2ff/0056b3?text=Dental+Office+Photo" alt="Modern dental office interior">
+        </div>
+        <div class="about-text">
+          <h3>Meet Dr. Sarah Chen, DDS</h3>
+          <p>With over 12 years of experience, Dr. Chen combines clinical excellence with a compassionate approach. Her mission is to make dental visits stress-free and focused on long-term oral health.</p>
+          <ul>
+            <li><span class="check">✓</span> American Dental Association Certified</li>
+            <li><span class="check">✓</span> Advanced Training in Invisalign & Implants</li>
+            <li><span class="check">✓</span> Sedation Options for Anxious Patients</li>
+            <li><span class="check">✓</span> State-of-the-Art Digital X-Rays</li>
+          </ul>
+          <a href="#contact" class="btn">Learn More About Our Team</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <h2 class="section-title">What Our Patients Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I used to dread the dentist, but Dr. Chen's team made me feel completely at ease. The office is clean, modern, and incredibly welcoming."</p>
+          <div class="author">— Mark T.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Got emergency care on a Saturday when my crown broke. They saw me within two hours and fixed everything perfectly. Highly recommend!"</p>
+          <div class="author">— Elena R.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"My kids actually look forward to their checkups now! The staff is patient, educational, and makes dental care fun for the whole family."</p>
+          <div class="author">— James & Lisa P.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="section-title">Book Your Appointment</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Visit Our Office</h3>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>123 Wellness Blvd, Suite 200<br>Springfield, IL 62704</div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>(555) 123-4567<br><em>Mon-Fri: 8am-6pm | Sat: 9am-2pm</em></div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div>hello@brightsmiledental.com</div>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-light);">We accept most major dental insurance plans and offer flexible financing options.</p>
+        </div>
+        <form class="contact-form" id="appointmentForm">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <select required>
+            <option value="" disabled selected>Preferred Service</option>
+            <option>General Checkup & Cleaning</option>
+            <option>Cosmetic Consultation</option>
+            <option>Emergency Visit</option>
+            <option>Other</option>
+          </select>
+          <textarea placeholder="Preferred date/time or notes..."></textarea>
+          <button type="submit" class="btn">Request Appointment</button>
+          <p class="form-success">✅ Thank you! We'll contact you within 24 hours to confirm.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>BrightSmile Dental</h4>
+        <p>Compassionate, modern dentistry for the whole family.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon-Thu: 8:00 AM - 6:00 PM</li>
+          <li>Friday: 8:00 AM - 5:00 PM</li>
+          <li>Saturday: 9:00 AM - 2:00 PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; <span id="year"></span> BrightSmile Dental. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // Form submission handler (demo)
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.querySelector('.form-success').style.display = 'block';
+      this.reset();
+      setTimeout(() => {
+        this.querySelector('.form-success').style.display = 'none';
+      }, 5000);
+    });
+
+    // Dynamic copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
